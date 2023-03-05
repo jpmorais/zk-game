@@ -17,7 +17,7 @@ const User = ({ account }) => {
     run();
   }, []);
 
-  return <div className="font-semibold p-2">{balance}</div>;
+  return <div className="font-semibold p-2"> Your current balance is {balance} eth.</div>;
 };
 
 export default User;

@@ -42,6 +42,7 @@ const Play = () => {
 
   return (
     <div className="flex flex-col space-y-3">
+      <label>Choose your luck number:</label>
       <input
         value={number}
         type="number"
