@@ -25,8 +25,9 @@ const Play = () => {
     const signer = await provider.getSigner();
 
     const zkGame = new ethers.Contract(address, ABI, signer);
+    let retorno;
     try {
-      const retorno = await zkGame.playGame(number, {
+      retorno = await zkGame.playGame(number, {
         value: ethers.utils.parseEther("0.001"),
       });
       await retorno.wait();
