@@ -2,6 +2,7 @@ import React from "react";
 import lottiePlay from "../assets/lottery.json";
 import lottieSad from "../assets/sad.json";
 import lottieWin from "../assets/win.json";
+import lottieTryAgain from '../assets/tryagain.json'
 
 import Lottie from "react-lottie-player";
 
@@ -27,9 +28,14 @@ const Modal = ({ type, setShowModal }) => {
                 style={{ width: 150, height: 150 }}
                 className="w-1/2"
               />
-              <h2 className="text-2xl font-semibold text-slate-800 w-1/2">
-                You are playing! The greatest luck in the world to you!
-              </h2>
+              <div className="flex flex-col space-y-2 w-1/2">
+                <h2 className="text-2xl font-semibold text-slate-800 ">
+                  You are playing! The greatest luck in the world to you!
+                </h2>
+                <h3 className="text-sm">
+                  (You need to confirm the transaction in MetaMask. If the wallet does not open, try again.)
+                </h3>
+              </div>
             </div>
           )}
           {type == "lost" && (
@@ -43,7 +49,12 @@ const Modal = ({ type, setShowModal }) => {
               />
               <div className="text-2xl font-semibold text-slate-800 w-1/2 space-y-3">
                 <h2>You didn't get the number right. Better luck next time.</h2>
-                <button className="block px-6 py-2 text-center text-white bg-yellow-600 rounded-md" onClick={handlePlayAgain}>Play again?</button>
+                <button
+                  className="block px-6 py-2 text-center text-white bg-yellow-600 rounded-md"
+                  onClick={handlePlayAgain}
+                >
+                  Play again?
+                </button>
               </div>
             </div>
           )}
@@ -62,6 +73,27 @@ const Modal = ({ type, setShowModal }) => {
               </h2>
             </div>
           )}
+          {type == "tryagain" && (
+            <div className="flex flex-row space-x-6">
+              <Lottie
+                loop
+                animationData={lottieTryAgain}
+                play
+                style={{ width: 150, height: 150 }}
+                className="w-1/2"
+              />
+              <div className="text-2xl font-semibold text-slate-800 w-1/2 space-y-3">
+                <h2>Something went wrong with your request =( Don't give up!.</h2>
+                <button
+                  className="block px-6 py-2 text-center text-white bg-red-600 rounded-md"
+                  onClick={handlePlayAgain}
+                >
+                  Try again!
+                </button>
+              </div>
+            </div>
+          )}
+
         </div>
       </div>
     </div>

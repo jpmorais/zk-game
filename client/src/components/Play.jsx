@@ -25,12 +25,16 @@ const Play = () => {
     const signer = await provider.getSigner();
 
     const zkGame = new ethers.Contract(address, ABI, signer);
-    const retorno = await zkGame.playGame(number, {
-      value: ethers.utils.parseEther("0.001"),
-    });
-    await retorno.wait();
+    try {
+      const retorno = await zkGame.playGame(number, {
+        value: ethers.utils.parseEther("0.001"),
+      });
+      await retorno.wait();
+    } catch(error) {
+      setTypeModal('tryagain')
+      setShowModal(true)
+    }
 
-    console.log(`Hash ${retorno.hash}`);
 
     const receipt = await provider.getTransactionReceipt(retorno.hash);
     const logs = receipt.logs;
