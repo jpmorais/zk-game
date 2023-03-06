@@ -66,13 +66,13 @@ const Wallet = ({ account, setAccount }) => {
   return (
     <div>
       {account ? (
-        <div className="font-semibold p-2 shadow-md">{account}</div>
+        <div className="font-semibold p-2 shadow-md text-gray-300"> You are currently logged in and your wallet is {account}</div>
       ) : (
         <div className="flex flex-row space-x-10">
           <button
             disabled={!walletEnabled}
             onClick={handleClickConnect}
-            className="border-2 border-red-900 bg-red-900 text-white rounded-md p-2 font-semibold hover:bg-white hover:text-black disabled:opacity-25 disabled:hover:bg-red-900 disabled:hover:text-white"
+            className="block px-6 py-2 text-center text-white bg-yellow-600 rounded-md disabled:opacity-25 disabled:hover:bg-yellow-600 disabled:hover:text-white font-semibold"
           >
             Connect Wallet
           </button>
