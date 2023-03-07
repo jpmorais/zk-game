@@ -332,8 +332,8 @@
       ]
     },
     "C:\\Users\\jpmor\\Documents\\projetos\\zk-game\\contracts\\ZKGame.sol": {
-      "lastModificationDate": 1678040436467,
-      "contentHash": "b1fda93ff1bd035a30b208f39ebe4b21",
+      "lastModificationDate": 1678133901971,
+      "contentHash": "db45610eaf885e6680f15775c50e544e",
       "sourceName": "contracts/ZKGame.sol",
       "solcConfig": {
         "version": "0.8.17",

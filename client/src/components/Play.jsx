@@ -9,7 +9,7 @@ const Play = () => {
   const [typeModal, setTypeModal] = useState('')
 
   const ABI = ["function playGame(uint _guessNumber) public payable"];
-  const address = "0xd0c13b237A1FDc70dd50418Ec796D1319B6eC7a3";
+  const address = "0xDa781f0eb9eE1C799FAE73B4B0AaA0F41636aC70";
 
   const refInput = useRef("");
 
@@ -36,7 +36,7 @@ const Play = () => {
       setShowModal(true)
     }
 
-
+    console.log(retorno)
     const receipt = await provider.getTransactionReceipt(retorno.hash);
     const logs = receipt.logs;
     console.log(receipt.logs);

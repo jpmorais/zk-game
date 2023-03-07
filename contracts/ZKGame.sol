@@ -7,7 +7,7 @@ contract ZkGame {
 
     address public owner; 
     uint public priceGame = 0.001 ether; // fee to pay the game
-    uint public maxNumber = 100;
+    uint public maxNumber = 1000;
     uint secretNumber;
 
     address public tokenAddr; // address of the token
@@ -44,7 +44,7 @@ contract ZkGame {
 
     function playGame(uint _guessNumber) public payable {
         require(msg.value == priceGame, "Please pay the game fee");
-        require(_guessNumber < maxNumber, "Please provide a valid number");
+        require(_guessNumber <= maxNumber, "Please provide a valid number");
         emit Played(msg.sender);
         if (_guessNumber == secretNumber) {
             uint toTransfer = address(this).balance * 80 / 100;                        
@@ -52,7 +52,8 @@ contract ZkGame {
             (bool success, ) = (msg.sender).call{value: toTransfer}("");
             require(success);
             TokenGame myToken = TokenGame(tokenAddr);
-            myToken.mint(msg.sender, 100);
+            uint8 decimals = myToken.decimals();
+            myToken.mint(msg.sender, 100 * 10 ** decimals);
         } 
         else {
             emit Lost(msg.sender);
