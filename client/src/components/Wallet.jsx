@@ -25,6 +25,7 @@ const Wallet = ({ account, setAccount }) => {
       setNetworkId(chain.chainId);
       if (chain.chainId != 280) {
         setAccount("");
+        setWalletEnabled(false)
       } else {
         const contas = await provider.send("eth_accounts");
         setWalletEnabled(true);
