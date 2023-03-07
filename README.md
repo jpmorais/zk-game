@@ -96,7 +96,7 @@ ALCHEMY_API=<ALCHEMY URL WITH KEY>
 
 If you don't have an account with Alchemy or another node provider, you can use a public node, or set the `ethNetwork` setting to *'goerli'* to let Hardhat provide a node for you. However, private nodes work better and faster.
 
-## Contratos inteligentes
+## Smart contracts
 
 To start writing our contracts, let's create a folder in the root called `contracts`. In this folder, we will write two smart contracts. A standard **ERC20** token contract and the contract for the guessing game we want to create.
 
