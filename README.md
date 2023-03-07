@@ -57,7 +57,7 @@ And choose the **Create an empty hardhat.config.js** option.
 
 Let's now change the hardhat configuration file, `hardhat.config.js`, to the code listed below. 
 
-```json
+```javascript
 require("@matterlabs/hardhat-zksync-solc")
 require("@nomicfoundation/hardhat-toolbox")
 require("@matterlabs/hardhat-zksync-deploy")
@@ -206,7 +206,8 @@ contract ZkGame {
         }
     }
 
-}```
+}
+```
 
 State variables are easy to understand, and most functions are used to change state variables. Let's focus on the playGame function, which is used to play the game. The Played event will always be emitted, as long as the function's requirements are met: the game value is paid and the chosen number is less than or equal to the maximum number. If the attempted number is different from the secret number, the Lost event will be issued.
 
