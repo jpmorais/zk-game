@@ -3,13 +3,12 @@ import { Web3Provider } from "zksync-web3";
 import { ethers } from "ethers";
 import Modal from "./Modal";
 
-const Play = () => {
+const Play = ({addressGame}) => {
   const [number, setNumber] = useState();
   const [showModal, setShowModal] = useState(false)
   const [typeModal, setTypeModal] = useState('')
 
   const ABI = ["function playGame(uint _guessNumber) public payable"];
-  const address = "0xDa781f0eb9eE1C799FAE73B4B0AaA0F41636aC70";
 
   const refInput = useRef("");
 
@@ -21,10 +20,11 @@ const Play = () => {
   const handleClick = async () => {
     setTypeModal('playing')
     setShowModal(true)
+    await ethereum.request({method: "eth_requestAccounts"})
     const provider = new Web3Provider(window.ethereum);
     const signer = await provider.getSigner();
 
-    const zkGame = new ethers.Contract(address, ABI, signer);
+    const zkGame = new ethers.Contract(addressGame, ABI, signer);
     let retorno;
     try {
       retorno = await zkGame.playGame(number, {
@@ -34,6 +34,7 @@ const Play = () => {
     } catch(error) {
       setTypeModal('tryagain')
       setShowModal(true)
+      console.log(`error ${error.message}`)
     }
 
     console.log(retorno)

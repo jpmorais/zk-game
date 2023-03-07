@@ -310,3 +310,36 @@ To verify the token contract, the command is similar. However, the token contrac
 ```shell
 $ npx hardhat verify --network zkTestnet <Address_Token> <Address_ZkGame>
 ```
+
+## Creating the frontend
+
+The frontend is the part of the dApp that allows user interaction with the contract. In theory, the user can interact directly with the contract from the block explorer, since the contract is verified, but the ideal is to have a user interface.
+
+We won't go into details of the frontend code, as that would make this tutorial too long. To install the frotend in your machine, you can clone the client folder and run the following command.
+
+```shell
+$ npm install
+```
+
+The frontend is a **React** application created with **vite**. It uses the following dependencies.
+
+- **tailwindcss**. Tailwind works like a css library..
+- **react-lottie-player**. Used to include lottie animations in the project.
+- **zksync-web3**. Matter Labs SDK for interacting with zkSync.
+
+After installing the dependencies, you need to replace the contract addresses. The addresses are found in variables located in the App.jsx file, as shown below.
+
+```javascript
+...
+const addressGame = "0xDa781f0eb9eE1C799FAE73B4B0AaA0F41636aC70";
+const addressToken = "0x82854bEE094a0d17ac0e0cDbba3158FdEa64019d"
+...
+```
+
+After replacing the address, just run the development server with the following command.
+
+```shell
+$ npm run dev
+```
+
+I hope you enjoyed!

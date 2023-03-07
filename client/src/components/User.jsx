@@ -2,11 +2,10 @@ import { Web3Provider } from "zksync-web3";
 import {ethers} from 'ethers'
 import React, { useEffect, useState } from "react";
 
-const User = ({ account }) => {
+const User = ({ account, addressToken }) => {
   const [balance, setBalance] = useState("");
   const [tokens, setTokens] = useState("")
 
-  const addressToken = "0x82854bEE094a0d17ac0e0cDbba3158FdEa64019d"
   const ABI = [
     "function balanceOf(address) public view returns (uint256)"
   ]

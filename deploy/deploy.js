@@ -15,14 +15,14 @@ const run = async function(hre) {
     const artifactToken = await deployer.loadArtifact("TokenGame")
     const artifactGame = await deployer.loadArtifact("ZkGame")
 
-    // const depositAmount = ethers.utils.parseEther("0.001")
-    // const depositHandle = await deployer.zkWallet.deposit({
-    //     to: deployer.zkWallet.address,
-    //     token: utils.ETH_ADDRESS,
-    //     amount: depositAmount
-    // })
+    const depositAmount = ethers.utils.parseEther("0.001")
+    const depositHandle = await deployer.zkWallet.deposit({
+        to: deployer.zkWallet.address,
+        token: utils.ETH_ADDRESS,
+        amount: depositAmount
+    })
 
-    // await depositHandle.wait()
+    await depositHandle.wait()
 
     const instanceZKGame = await deployer.deploy(artifactGame)
     const addressZKGame = instanceZKGame.address
